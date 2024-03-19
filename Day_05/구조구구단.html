@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+            margin:0;
+            padding:0;
+        }
+    #box1{
+        width:80%;
+        margin:0 auto;
+    }
+    h1 {
+        text-align: center;
+    }
+    .cantainer {
+        display:flex;
+        justify-content: space-between;
+        
+    }
+    .dan-container{
+        
+        border: 1px solid black;
+        padding: 10px;
+    }
+</style>
+<body>
+
+    <script>
+        document.write(`<div id='box1'>`);
+        document.write(`<h1>구구단</h1>`);
+        document.write(`<div class='container'>`);
+        for(let a=2; a<=9; a++){
+            document.write(`<div class='dan-container'>`);
+            document.write(`<h3>${a}단</h3>`);
+            for(let b=1; b<=9; b++){
+                document.write(`<p>${a} x ${b} = ${a*b}</p>`);
+            }
+            document.write(`</div>`);
+        }
+            
+            
+        document.write(`</div>`);
+        document.write(`</div>`);
+        
+    </script>
+</body>
+</html>
