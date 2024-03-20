@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function 별(){
+            document.write(`&nbsp;*&nbsp;`);
+        }
+        function 공백(){
+            document.write(`&nbsp;&nbsp;&nbsp;`);
+        }
+        function 엔터(){
+            document.write(`<br>`);
+        }
+        
+        
+        엔터();
+
+        별();
+        엔터();
+        별();
+        별();
+        엔터();
+        별();
+        별();
+        별();
+        엔터();
+        엔터();
+        for(let i=0; i<5;i++){
+            for(let j=0; j<=i;j++){
+                별();
+            }
+            엔터();
+        }
+
+        function 덧셈계산(a,b){
+            return a+b;
+            return a;
+        }
+        
+
+        // console.log(a);
+        // 매개변수는 함수 내부에서만 접근 가능해 외부에서는 사용할수 없다.
+        let 결과 = 덧셈계산(1,2)
+        
+        // 함수에는 매개변수와 return의 개념이 이있다.
+        // 별() 같은 함수는 매개변수와 return 이 전부 생략된 상태
+        // 외부에서 값을 받아서 써야하는 경우 매개변수를 사룡하면 되고
+        // 함수 내에서 계산한 값을 외부로 가져가려면 return을 사용하면 된다.
+
+        
+    </script>
+</body>
+</html>
