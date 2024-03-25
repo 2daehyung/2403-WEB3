@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        박스입니다.
+    </div>
+    <div id="test">
+        test입니다.
+    </div>
+    <script>
+        const 겟엘리 = document.getElementsByClassName('box');
+        const 쿼리셀 = document.querySelector('box');
+
+        const 테스트 = document.getElementById('test');
+
+        테스트.classList.add('box');
+
+        겟엘리[0].classList.remove('box');
+
+        console.log(겟엘리);
+        console.log(쿼리셀);
+        // 겟 엘리먼츠 방식은 클래스가 나중에 추가되거나 삭제될때 항상 업데이트가 된다
+        // 위 예제를 기준으로 실시간으로 .box를 가지고 있는가? 가 판단 기준이다.
+
+        // 반면 쿼리셀렉트는 .box로 개체를 가져온뒤, 나중에 .box가 삭제도더라도
+        // 해당 개체를 계속 가지고있다.
+
+    </script>
+</body>
+</html>

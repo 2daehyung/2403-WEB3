@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        안녕하세요
+    </div>
+    <script>
+        // document.getcl ->클래스 자동완성
+        // document.getid -> 아이디 자동완성
+        // document.gettag -> 태그 자동완성
+        const 클래스박스 = document.getElementsByClassName('box');
+        // 클래스는 항상 복수일 가능성이 있기때문에 html내에 클래스가 0개이던 100개이던
+        // 항상 HTML collection 형태로 가져오게된다.
+        // 배열 사용과 도잉ㄹ하게 { 클래스박스[0] }형태로 컬렉션 내의 컨텐츠를 사용 할  수 있다.
+        const 아이디박스 = document.getElementsByClassName('id-box');
+        // 반면 id는 항상 하나만 존재하기때문에 배열 같은 구조 없이 바로 컨텐츠를 가져올 수 있다.
+        console.log(`클래스박스 :`);
+        console.log(클래스박스);
+        console.log(`아이디박스 :`);
+        console.log(아이디박스);
+
+        const 쿼리셀렉터 = document.querySelector('.box');
+    </script>
+</body>
+</html>
