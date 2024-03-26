@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const 인사버튼 = document.getElementById('my-button');
+
+        // 인사버튼.addEventListener('click',인사하기)
+        console.log(인사버튼)
+
+        // 내용이 간단하고 함수 재사용이 없는경우
+        // ()=>{} 형태의 화살표함수 사용
+
+        인사버튼.addEventListener('click',()=>{
+            alert('안녕하세요');
+        })
+        function 인사하기(){
+            alert('안녕하세요');
+        }
+
+    
+    </script>
+</body>
+</html>
