@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        컴퓨터와 가위바위보
+
+     -->
+
+     <script>
+        const 유저입력 = prompt('0 : 가위 , 1: 바위 , 2: 보 입니다. 셋중 하나를 입력해주세요.');        
+        
+        const 컴퓨터값 =Math.floor(Math.random()*3);
+
+        const table = ['가위','바위','보'];
+        
+
+      //  if(유저입력==0){ 
+      //      alert('당신은 가위를 냈습니다.');
+      //  }else if (유저입력==1){
+      //     alert('당신은 바위를 냈습니다.');
+      // }else if (유저입력==2){
+      //      alert('당신은 보를 냈습니다.');
+      //  }
+        alert(`당신 : ${table[유저입력]} , 컴퓨터 : ${table[컴퓨터값]}`);
+        if(유저입력==컴퓨터값){
+            alert('비겼습니다.');
+        }else if(유저입력==0 && 컴퓨터값==2 || 유저입력==1 && 컴퓨터값==0 || 유저입력==2 && 컴퓨터값==1){
+            alert('당신이 이겼습니다.');
+        }else {
+            alert('당신이 패배했습니다.');
+        }
+        //else if(유저입력==0 && 컴퓨터값==1 || 유저입력==1 && 컴퓨터값==2 || 유저입력==2 && 컴퓨터값==0){
+        //    alert('당신이 패배했습니다.');
+        //}
+        
+     </script>
+</body>
+</html>
