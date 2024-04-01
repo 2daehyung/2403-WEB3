@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        list-style: none;
+    }
+    .slide-container {
+        width:300px;
+        height:200px;
+        border:10px solid red;    
+        overflow: hidden;    
+    }
+    .contents-wrapper {
+        width: fit-content;
+        display: flex;
+        transform: translateX(0px);
+        transition: 1s;
+    }
+    .content {
+        width:300px;
+        height:200px;
+        background: gray;
+        color:white;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        font-size:50px;
+        flex-shrink: 0;
+    }
+    
+    
+</style>
+<body>
+    <!-- 캐러셀의 기본 원리
+         화면에 보여줄 캐러셀의 크기를 정해주고, 내부에 들어가는 컨텐츠는
+         넘치게끔 길게 만들어 준 뒤 캘셀 컨테이너에는 overflow:hidden; 을 지정,
+         내부 컨텐츠는 translateX()를 통해 조정 -->
+
+    <div class="slide-container">
+        <ul class="contents-wrapper">
+            <li class="content">1</li>
+            <li class="content">2</li>
+            <li class="content">3</li>
+            <li class="content">4</li>
+        </ul>
+    </div>
+    <button id="prev">이전</button>
+    <button id="next">다음</button>
+    
+    <script>
+        // 다음버튼을 누를때 슬라이드가 다음장으로 넘어가게 만들어봅시다!
+        const slide =document.querySelector('.contents-wrapper');
+        const prev =document.getElementById('prev');
+        const next =document.getElementById('next');
+
+        let index =0;
+
+        next.addEventListener('click', () => {
+            index ++;
+            console.log(index);
+            slide.style.transform = `translateX(-${index*300}px)`
+        })
+        
+        prev.addEventListener('click', () => {
+            index --;
+            console.log(index);
+            slide.style.transform = `translateX(-${index*300}px)`
+        })
+        function 위치적용() {
+            slide.style.transform = `translateX(-${index*300}px)`
+        }
+        
+    </script>
+    </body>
+</html>
