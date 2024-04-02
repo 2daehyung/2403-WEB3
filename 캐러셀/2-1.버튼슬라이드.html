@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        list-style: none;
+    }
+    .slide-container {
+        width:300px;
+        height:200px;
+        border:10px solid red;    
+        overflow: hidden;    
+    }
+    .contents-wrapper {
+        width: fit-content;
+        display: flex;
+        transform: translateX(0px);
+        transition: 1s;
+    }
+    .content {
+        width:300px;
+        height:200px;
+        background: gray;
+        color:white;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        font-size:50px;
+        flex-shrink: 0;
+    }
+    .slide-button {
+        width: 20px;
+        height: 20px;
+        background:gray;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .button-slide {
+        display:flex;
+        justify-content: space-between;
+        width:200px;
+    }
+
+    .slide-button.active {
+        background:red;
+    }
+
+</style>
+<body>
+    <!-- 캐러셀의 기본 원리
+         화면에 보여줄 캐러셀의 크기를 정해주고, 내부에 들어가는 컨텐츠는
+         넘치게끔 길게 만들어 준 뒤 캘셀 컨테이너에는 overflow:hidden; 을 지정,
+         내부 컨텐츠는 translateX()를 통해 조정 -->
+
+    <div class="slide-container">
+        <ul class="contents-wrapper">
+            <li class="content">1</li>
+            <li class="content">2</li>
+            <li class="content">3</li>
+            <li class="content">4</li>
+            <li class="content">5</li>
+            <li class="content">6</li>
+        </ul>
+    </div>
+    <button id="prev">이전</button>
+    <div class="button-slide">
+        <!-- <div class="slide-button active"></div>
+        <div class="slide-button"></div>
+        <div class="slide-button"></div>
+        <div class="slide-button"></div>
+        <div class="slide-button"></div>
+        <div class="slide-button"></div> -->
+    </div>
+    <button id="next">다음</button>
+    
+    <script>
+        // 다음버튼을 누를때 슬라이드가 다음장으로 넘어가게 만들어봅시다!
+        // 인덱스가 범위 밖으로 나가는것을 제한
+        // 현재 슬라이드가 0부터 5번까지있는데
+        // 0번에서 이전을누르면 5으로
+        // 5번에서 다음을누르면 0으로
+
+        const slide =document.querySelector('.contents-wrapper');
+        const prev =document.getElementById('prev');
+        const next =document.getElementById('next');
+        const buttonContainer =document.querySelector('.button-slide');
+        
+        console.log(slide.childElementCount);
+
+        for(let i=0; i< slide.childElementCount; i++){
+            // button 이란 상수에 div 만들어 저장
+            const button = document.createElement('div');
+            // button(div)에 클래스 추가
+            button.classList.add('slide-button');
+            // html에 마크업해둔 버튼 컨테이너에 만들어놓은 button(div)를 자식요소로 추가
+            buttonContainer.appendChild(button);
+            // 내가만든 button(div)에다가 클릭이벤트 추가
+            // 반복문을 이용해 6개 만들고있는 상황
+            // i는 0부터 5까지 1씩 늘어나면서 버튼을만드는데
+            // 슬라이드 인덱스도 0 부터 5를 채용하고 있기때문에
+            // 각 버튼을 클릭했을때 인덱스를 i로 만들어주고, 만들어둔 위치적용 함수를 적용하면된다.
+            button.addEventListener('click' , ()=>{
+                index = i;
+                위치적용();
+                // 버튼 전체 색 초기화
+                for(let j=0; j<slide.buttonContainer.childElementCount;j++){
+                    buttonContainer.children[j].classList.remove('active');
+                }
+                // 내가 클릭한버튼 색칠
+                buttonContainer.children[i].classList.add('active');
+            })
+        }
+        console.log(buttonContainer.children[2]);
+        // buttonContainer.firstElementChild.classList.add('active');
+        // 배열의 프로퍼티중 length는 배열의 길이를 나타낸다
+        // 이와 비슷하게 html요소의 자식 갯수를 파악할 수 있는 프로퍼티는 .childeElementCount 가있다.
+
+
+        let index =0;
+        
+        next.addEventListener('click', () => {
+            if(index<slide.childElementCount-1){
+                index ++;
+            }else{
+                index=0;
+            }
+            // index++; 
+            // if(index = slide.childElementCount-1){
+            //  index=0;
+            // }
+            위치적용();
+            console.log(index);
+        })
+        
+        prev.addEventListener('click', () => {
+            if(index>0){
+                index --;
+            }else{
+                index=slide.childElementCount-1;
+            }
+            위치적용();
+            console.log(index);
+        })
+        function 위치적용() {
+            slide.style.transform = `translateX(-${index*300}px)`
+        }
+
+    </script>
+    </body>
+</html>
