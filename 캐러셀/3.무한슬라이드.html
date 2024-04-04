@@ -15,7 +15,7 @@
         width:300px;
         height:200px;
         border:10px solid red;    
-        /* overflow: hidden;    */
+        overflow: hidden;
     }
     .contents-wrapper {
         width: fit-content;
@@ -150,11 +150,13 @@
             index --;
             위치적용(true);
             setTimeout(() => {
-            if(index<viewCount){
-                    index=wrapper.childElementCount-1 -viewCount;
-                    위치적용(false);
-            }moveCheck=false;
-            },1000);
+                    if(index<viewCount){
+                        index=wrapper.childElementCount-1 -viewCount;
+                        위치적용(false);
+                        }
+                    moveCheck=false;
+                },1000);
+
             }
         })
 
