@@ -9,9 +9,10 @@
         * {
             padding: 0;
             margin: 0;
+            box-sizing: border-box;
         }
         .slide-container {
-            width: 1000px;
+            width: 100%;
             height: 200px;
             border: 10px solid red;
             overflow: hidden;
@@ -71,7 +72,7 @@
     </div>
     <button id="next">다음</button>
     <script>
-        const viewCount = 5;
+        const viewCount = 2;
         const gap = 8;
         let moveCheck = false;
         
@@ -86,13 +87,21 @@
         console.log(slider.getBoundingClientRect().width)
         // html 개체의 컨텐츠 크기(보더등은 제외함)
         console.log(slider.clientWidth)
-
-        const contentsWidth = (slider.clientWidth - gap * (viewCount-1)) / viewCount
-
-        wrapper.style.gap = `${gap}px`
-        for(let i = 0 ; i < wrapper.childElementCount ; i ++) {
-            wrapper.children[i].style.width = `${contentsWidth}px`
+        let index = viewCount;
+        let contentsWidth
+        브라우저크기변화()        
+        window.addEventListener('resize',브라우저크기변화);
+        function 브라우저크기변화() {
+            contentsWidth = (slider.clientWidth - gap * (viewCount-1)) / viewCount    
+            wrapper.style.gap = `${gap}px`
+            for(let i = 0 ; i < wrapper.childElementCount ; i ++) {
+            wrapper.children[i].style.width = `${contentsWidth}px`;
+            }
+            위치적용(false);
         }
+
+
+        
     
         const firstClone = []
         const lastClone = []
@@ -108,8 +117,7 @@
         }
 
 
-        let index = viewCount;
-        위치적용(false);
+        
 
         next.addEventListener('click', ()=>{
             if(!moveCheck){
